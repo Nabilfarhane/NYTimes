@@ -1,0 +1,22 @@
+import requests
+import json
+from elasticsearch import Elasticsearch
+
+# configure elasticsearch
+config = {
+    'host': 'vmi334550.contaboserver.net'
+}
+es = Elasticsearch([config,], timeout=300)
+
+apiKey='0bZbi4PqGb6xJa7IfA0tV6JuX0JlRqbT'
+articleSearchUrl = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=' + apiKey
+
+#json = {'somekey': 'somevalue'}
+queryList = ['inflation']
+
+for q in queryList:
+    url = articleSearchUrl + '&q=' + q
+    r = requests.get(url)
+    result_json = json.loads(r.text)
+    es.indices.create(index = 'articlesearch_' + q + '_index', body = result_json)
+    print(result_json['response'])
