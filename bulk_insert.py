@@ -13,7 +13,7 @@ mydb = client["database_nyt"]
 archive_collection = mydb["archive_articles"]
 
 api = 'Article_Archive'
-api_key = 'X09aOTUaaxBAkXIY88U2BzG6BD83owFX'
+api_key = 'insert your key'
 years = ['2020','2021','2022']
 months = [i+1 for i in range(12)]
 
