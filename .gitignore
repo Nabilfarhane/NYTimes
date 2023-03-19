@@ -130,5 +130,5 @@ dmypy.json
 
 data/
 postgres_data/
-sample-training/
+sample_training/
 
